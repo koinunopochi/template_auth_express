@@ -114,7 +114,7 @@ router.post('/login', async (req, res, next) => {
       expiresIn: '15h',
     });
     // refresh_tokenの生成
-    const refresh_token = jwt.sign({ email: email }, process.env.JWT_SECRET, {
+    const refresh_token = jwt.sign({ email: email }, process.env.JWT_REFRESH_SECRET, {
       expiresIn: '30d',
     });
 
@@ -177,7 +177,7 @@ router.post('/delete-account', async (req, res, next) => {
     requiredParameters(req.cookies, ['refresh_token','auth_token']);
 
     // refresh_tokenの検証
-    const decoded = jwt.verify(refresh_token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(refresh_token, process.env.JWT_REFRESH_SECRET);
     const email = decoded.email;
     // auth_tokenの検証
     const decoded_auth = jwt.verify(auth_token, process.env.JWT_SECRET);
@@ -217,7 +217,7 @@ router.post('/refresh', async (req, res, next) => {
     requiredParameters(req.cookies, ['refresh_token']);
 
     // refresh_tokenの検証
-    const decoded = jwt.verify(refresh_token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(refresh_token, process.env.JWT_REFRESH_SECRET);
     const email = decoded.email;
     // ユーザーの存在確認
     const user = await isUserExist(email);
