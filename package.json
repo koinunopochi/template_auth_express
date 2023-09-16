@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.1.0",
+    "nodemailer": "^6.9.5",
+    "pino": "^8.15.1",
+    "pino-pretty": "^10.2.0"
+  },
+  "scripts": {
+    "docs": "jsdoc ./ lib/ controller/"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.2"
+  }
+}
